@@ -2,15 +2,15 @@ import { parse } from './utils';
 
 const mockResult = [{
         name: "New York",
-        postalCode: 2005
+        postalCode: "2005"
     },
     {
         name: "Tokyo",
-        postalCode: 3006
+        postalCode: "3006"
     },
     {
         name: "Florida",
-        postalCode: 2008
+        postalCode: "2008"
     }
 ]
 
