@@ -24,3 +24,5 @@ yarn-error.log*
 
 # ignore generated dist folder
 /dist
+
+.env
