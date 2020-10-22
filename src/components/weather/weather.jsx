@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { parse } from './../../utils'
 import { getWeather } from './weather.resource'
 import { Formik, Field, Form } from 'formik'
+import styles from './weather.module.css';
 
 export const Weather = () => {
     const [results, setResults] = useState([]);
@@ -29,7 +30,8 @@ export const Weather = () => {
     }
 
     return (
-        <div>
+        <div className={styles.app}>
+            <h1>Invisible Technologies Weather App</h1>
             <Formik
                 initialValues={{locations_str: ''}}
                 onSubmit={(values, { setSubmitting }) => {
@@ -38,8 +40,8 @@ export const Weather = () => {
                 }}
             >
                 <Form>
-                    <label htmlFor="locations">Enter locations</label><br/>
-                    <Field as="textarea" name="locations_str"/><br/>
+                    <label htmlFor="locations">Enter locations as a single string of the form (location name, postal code)</label><br/>
+                    <Field as="textarea" name="locations_str" placeholder="Portland, 2005, Dallas, 75001"/><br/>
                     <button type="submit">Submit</button>
                 </Form>
             </Formik>
