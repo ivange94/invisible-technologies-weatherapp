@@ -1,31 +1,35 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     module: {
         rules: [{
-            test: /\.(ts|tsx|js|jsx)$/,
-            exclude: /node_modules/,
-            use: [{
-                loader: "babel-loader"
+                test: /\.(ts|tsx|js|jsx)$/,
+                exclude: /node_modules/,
+                use: [{
+                        loader: "babel-loader"
+                    },
+                    {
+                        loader: "ts-loader"
+                    }
+                ]
             },
             {
-                loader: "ts-loader"
-            }]
-        },
-        {
-            test: /\.s?css$/i,
-            use: [
-                {loader: 'style-loader'}, 
-                {
-                    loader: 'css-loader',
-                    options: {
-                        modules: {
-                            localIdentName: "[name]__[local]--[hash:base64:5]"
+                test: /\.s?css$/i,
+                use: [
+                    { loader: 'style-loader' },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: "[name]__[local]--[hash:base64:5]"
+                            }
                         }
-                    }
-                },
-                {loader: 'sass-loader'}]
-        }]
+                    },
+                    { loader: 'sass-loader' }
+                ]
+            }
+        ]
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
@@ -34,6 +38,7 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./public/index.html",
             filename: "./index.html"
-        })
+        }),
+        new Dotenv()
     ]
 };
